@@ -1,0 +1,65 @@
+--- CMakeLists.txt.orig	2013-05-06 19:14:07.734168302 +0400
++++ CMakeLists.txt	2013-05-06 19:19:06.027163767 +0400
+@@ -41,6 +41,7 @@
+ 
+ 
+ find_package ( QTermWidget REQUIRED )
++find_package ( Qxt REQUIRED COMPONENTS QxtCore QxtGui)
+ 
+ if (APPLE)
+    FIND_LIBRARY(CARBON_LIBRARY Carbon REQUIRED)
+--- src/CMakeLists.txt.orig	2013-05-06 19:15:37.239166941 +0400
++++ src/CMakeLists.txt	2013-05-06 19:21:22.933161686 +0400
+@@ -8,7 +8,6 @@
+     termwidgetholder.cpp
+     properties.cpp
+     propertiesdialog.cpp
+-    third-party/qxtglobalshortcut.cpp
+ )
+ 
+ if(WIN32)
+@@ -24,7 +23,6 @@
+ else()
+     set(QTERM_SRC
+         ${QTERM_SRC}
+-        third-party/qxtglobalshortcut_x11.cpp
+     )
+ endif()
+ 
+@@ -34,7 +32,6 @@
+     termwidget.h
+     termwidgetholder.h
+     propertiesdialog.h
+-    third-party/qxtglobalshortcut.h
+ )
+ 
+ set( QTERM_UI_SRC
+@@ -61,6 +58,8 @@
+     ${CMAKE_CURRENT_SOURCE_DIR}
+     ${CMAKE_CURRENT_BINARY_DIR}
+     ${QTERMWIDGET_INCLUDE_DIR}
++    ${QXT_QXTCORE_INCLUDE_DIR}
++    ${QXT_QXTGUI_INCLUDE_DIR}
+ )
+ if (X11_FOUND)
+     include_directories(${X11_INCLUDE_DIR})
+@@ -109,6 +108,8 @@
+ target_link_libraries( ${EXE_NAME}
+     ${QT_LIBRARIES}
+     ${QTERMWIDGET_LIBRARIES}
++    ${QXT_QXTCORE_LIB_RELEASE}
++    ${QXT_QXTGUI_LIB_RELEASE}
+     util
+ )
+ if (APPLE)
+--- src/mainwindow.h.orig	2013-05-06 19:25:32.607157891 +0400
++++ src/mainwindow.h	2013-05-06 19:25:41.686157753 +0400
+@@ -24,7 +24,7 @@
+ #include "ui_qterminal.h"
+ 
+ #include <QMainWindow>
+-#include "third-party/qxtglobalshortcut.h"
++#include "qxtglobalshortcut.h"
+ 
+ class QToolButton;
+ 
