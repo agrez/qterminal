@@ -3,7 +3,7 @@
 
 Name:		qterminal
 Version:	0.4.0
-Release:	3%{?dist}
+Release:	4%{?dist}
 License:	GPLv2
 #Source0:	https://github.com/qterminal/qerminal/archive/%{commit}/%{name}-%{version}-%{shortcommit}.tar.gz
 Source0:	https://github.com/qterminal/qterminal/tarball/%{commit}/%{name}-%{name}-%{version}-%{shortcommit}.tar.gz
@@ -46,6 +46,9 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}_drop.desktop
 %{_datadir}/pixmaps/%{name}.png
 
 %changelog
+* Sun Aug 04 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.4.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
+
 * Tue May 07 2012 TI_Eugene <ti.eugene@gmail.com> - 0.4.0-3
 - Source URL update
 - second desktop validate added
