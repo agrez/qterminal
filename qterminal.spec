@@ -3,7 +3,7 @@
 
 Name:		qterminal
 Version:	0.4.0
-Release:	5%{?dist}
+Release:	6%{?dist}
 License:	GPLv2
 Source0:	https://github.com/qterminal/qterminal/tarball/%{commit}/%{name}-%{name}-%{version}-%{shortcommit}.tar.gz
 Summary:	Advanced terminal emulator
@@ -39,6 +39,9 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}_drop.desktop
 %{_datadir}/pixmaps/%{name}.png
 
 %changelog
+* Sun Jun 08 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.4.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
 * Tue Nov 19 2013 TI_Eugene <ti.eugene@gmail.com> - 0.4.0-5
 - Next git snapshot
 - Changelog dates (year) fixed
