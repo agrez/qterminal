@@ -6,7 +6,7 @@
 
 Name:		qterminal
 Version:	0.6.0
-Release:	1%{?dist}
+Release:	2%{?dist}
 License:	GPLv2
 URL:		https://github.com/qterminal/qterminal
 Source0:	https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
@@ -53,6 +53,9 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}_drop.desktop
 
 
 %changelog
+* Fri Apr 10 2015 TI_Eugene <ti.eugene@gmail.com> - 0.6.0-2
+- Rebuild with new qtermwidget
+
 * Tue Nov 04 2014 TI_Eugene <ti.eugene@gmail.com> - 0.6.0-1
 - Version bump
 
