@@ -6,7 +6,7 @@
 
 Name:		qterminal
 Version:	0.6.0
-Release:	2%{?dist}
+Release:	3%{?dist}
 License:	GPLv2
 URL:		https://github.com/qterminal/qterminal
 Source0:	https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
@@ -53,6 +53,9 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}_drop.desktop
 
 
 %changelog
+* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.6.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Fri Apr 10 2015 TI_Eugene <ti.eugene@gmail.com> - 0.6.0-2
 - Rebuild with new qtermwidget
 
