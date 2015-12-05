@@ -1,0 +1,49 @@
+[Desktop Entry]
+Type=Application
+Exec=qterminal-qt5 --drop
+Terminal=false
+Categories=Qt;System;TerminalEmulator;
+Icon=qterminal
+
+Name=QTerminal drop down (Qt5)
+GenericName=Drop-down Terminal (Qt5)
+
+GenericName[bg]=Падащ терминал (Qt5)
+GenericName[ca]=Terminal desplegable (Qt5)
+GenericName[ca@valencia]=Terminal desplegable (Qt5)
+GenericName[cs]=Vysouvací terminál (Qt5)
+GenericName[da]=Terminal der ruller ned (Qt5)
+GenericName[de]=Aufklapp-Terminal (Qt5)
+GenericName[en_GB]=Drop-down Terminal (Qt5)
+GenericName[es]=Terminal de menú desplegable (Qt5)
+GenericName[et]=Lahtikeriv terminal (Qt5)
+GenericName[fr]=Terminal déroulant (Qt5)
+GenericName[hr]=Spuštajući terminal (Qt5)
+GenericName[hu]=Legördülő terminál (Qt5)
+GenericName[it]=Terminale a discesa (Qt5)
+GenericName[ja]=ドロップダウン式ターミナル
+GenericName[km]=ស្ថានីយ​ទម្លាក់​ចុះ
+GenericName[ko]=위에서 내려오는 터미널
+GenericName[nb]=Nedtrekksterminal (Qt5)
+GenericName[nds]=Utklapp-Konsool (Qt5)
+GenericName[nl]=Uitvouwbare terminalemulator (Qt5)
+GenericName[pa]=ਲਟਕਦਾ ਟਰਮੀਨਲ
+GenericName[pt]=Terminal Deslizante (Qt5)
+GenericName[pt_BR]=Terminal suspenso (Qt5)
+GenericName[ro]=Terminal derulant (Qt5)
+
+GenericName[ru]=Выпадающий терминал (Qt5)
+Comment[ru]=Вападающий эмулятор терминала (Qt5).
+
+GenericName[sk]=Rozbaľovací terminál (Qt5)
+GenericName[sv]=Rullgardinsterminal (Qt5)
+GenericName[th]=เทอร์มินัลแบบหย่อนลง
+GenericName[tr]=Yukarıdan Açılan Uçbirim (Qt5)
+GenericName[uk]=Спадний термінал (Qt5)
+GenericName[x-test]=xxDrop-down Terminalxx (Qt5)
+GenericName[zh_CN]=拉幕式终端
+GenericName[zh_TW]=下拉式終端機
+
+Comment=A drop-down terminal emulator (Qt5).
+
+
