@@ -6,7 +6,7 @@
 
 Name:		qterminal
 Version:	0.6.0
-Release:	4%{?dist}
+Release:	5%{?dist}
 License:	GPLv2
 URL:		https://github.com/qterminal/qterminal
 Source0:	https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
@@ -96,6 +96,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}_drop.desktop
 
 
 %changelog
+* Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.0-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+
 * Wed Dec 2 2015 TI_Eugene <ti.eugene@gmail.com> - 0.6.0-4
 - Qt5 version added
 
