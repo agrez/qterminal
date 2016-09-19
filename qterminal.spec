@@ -6,12 +6,13 @@
 
 Name:		qterminal
 Version:	0.6.0
-Release:	5%{?dist}
+Release:	6%{?dist}
 License:	GPLv2
 URL:		https://github.com/qterminal/qterminal
 Source0:	https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:	%{name}-qt5.desktop
 Source2:	%{name}_drop-qt5.desktop
+Patch0:     %{name}-fedberry-defaults.patch
 Summary:	Advanced terminal emulator
 Requires:	qterminal-common
 BuildRequires:	desktop-file-utils
@@ -46,7 +47,7 @@ Common files for Qterminal as qt4 as qt5 versions.
 
 %prep
 %setup -q
-#rm -rf src/third-party
+%patch0 -p1 -b .fedberry-defaults
 
 
 %build
@@ -96,6 +97,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}_drop.desktop
 
 
 %changelog
+* Mon Sep 19 2016 Vaughan <devel at agrez.net> - 0.6.0-6
+- Update qterminal defaults
+
 * Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.0-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
