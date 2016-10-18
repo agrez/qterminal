@@ -1,5 +1,5 @@
 --- qterminal-0.7.0/src/properties.cpp.orig	2016-09-24 06:50:45.000000000 +0800
-+++ qterminal-0.7.0/src/properties.cpp	2016-10-17 18:57:10.715256570 +0800
++++ qterminal-0.7.0/src/properties.cpp	2016-10-18 19:11:19.319007054 +0800
 @@ -54,7 +54,7 @@
  {
      QFont default_font = QApplication::font();
@@ -9,7 +9,7 @@
      default_font.setStyleHint(QFont::TypeWriter);
      return default_font;
  }
-@@ -111,7 +111,7 @@
+@@ -111,12 +111,12 @@
      tabsPos = m_settings->value("TabsPosition", 0).toInt();
      /* default to BlockCursor */
      keyboardCursorShape = m_settings->value("KeyboardCursorShape", 0).toInt();
@@ -18,3 +18,9 @@
      m_motionAfterPaste = m_settings->value("MotionAfterPaste", 0).toInt();
  
      /* toggles */
+     borderless = m_settings->value("Borderless", false).toBool();
+-    tabBarless = m_settings->value("TabBarless", false).toBool();
++    tabBarless = m_settings->value("TabBarless", true).toBool();
+     menuVisible = m_settings->value("MenuVisible", true).toBool();
+     askOnExit = m_settings->value("AskOnExit", true).toBool();
+     saveSizeOnExit = m_settings->value("SaveSizeOnExit", true).toBool();
