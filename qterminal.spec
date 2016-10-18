@@ -1,6 +1,6 @@
 Name:		qterminal
 Version:	0.7.0
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	A lightweight Qt5 terminal emulator
 License:	GPLv2
 URL:		https://github.com/qterminal/qterminal
@@ -45,12 +45,14 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}_drop.desktop
 %find_lang %{name} --with-qt --without-mo
 
 
-%post
-%desktop_database_post
+%posttrans
+update-desktop-database -q &> /dev/null || :
 
 
 %postun
-%desktop_database_postun
+if [ $1 -eq 0 ] ; then
+update-desktop-database -q &> /dev/null || :
+fi
 
 
 %files -f %{name}.lang
@@ -64,6 +66,10 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}_drop.desktop
 
 
 %changelog
+* Tue Oct 18 2016 Vaughan <devel at agrez.net> - 0.7.0-2
+- Update fedberry defaults patch
+- Fix %%post scripts
+
 * Mon Oct 17 2016 Vaughan <devel at agrez.net> - 0.7.0-1
 - New release
 - Depreciate Qt4 build (drop separte qt5 / common rpms)
