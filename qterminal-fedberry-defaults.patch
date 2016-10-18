@@ -1,6 +1,6 @@
---- qterminal-0.6.0/src/properties.cpp.orig	2014-10-22 16:13:14.000000000 +0800
-+++ qterminal-0.6.0/src/properties.cpp	2016-09-19 09:26:47.561958391 +0800
-@@ -35,7 +35,7 @@
+--- qterminal-0.7.0/src/properties.cpp.orig	2016-09-24 06:50:45.000000000 +0800
++++ qterminal-0.7.0/src/properties.cpp	2016-10-17 18:57:10.715256570 +0800
+@@ -54,7 +54,7 @@
  {
      QFont default_font = QApplication::font();
      default_font.setFamily(DEFAULT_FONT);
@@ -9,12 +9,12 @@
      default_font.setStyleHint(QFont::TypeWriter);
      return default_font;
  }
-@@ -92,7 +92,7 @@
-     scrollBarPos = settings.value("ScrollbarPosition", 2).toInt();
-     /* default to North. I'd prefer South but North is standard (they say) */
-     tabsPos = settings.value("TabsPosition", 0).toInt();
--    alwaysShowTabs = settings.value("AlwaysShowTabs", true).toBool();
-+    alwaysShowTabs = settings.value("AlwaysShowTabs", false).toBool();
-     m_motionAfterPaste = settings.value("MotionAfterPaste", 0).toInt();
+@@ -111,7 +111,7 @@
+     tabsPos = m_settings->value("TabsPosition", 0).toInt();
+     /* default to BlockCursor */
+     keyboardCursorShape = m_settings->value("KeyboardCursorShape", 0).toInt();
+-    hideTabBarWithOneTab = m_settings->value("HideTabBarWithOneTab", false).toBool();
++    hideTabBarWithOneTab = m_settings->value("HideTabBarWithOneTab", true).toBool();
+     m_motionAfterPaste = m_settings->value("MotionAfterPaste", 0).toInt();
  
      /* toggles */
