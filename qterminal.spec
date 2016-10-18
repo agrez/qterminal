@@ -1,102 +1,78 @@
-%if 0%{?rhel} == 6
-%define cmake_pkg cmake28
-%else
-%define cmake_pkg cmake
-%endif
-
 Name:		qterminal
-Version:	0.6.0
-Release:	6%{?dist}
+Version:	0.7.0
+Release:	1%{?dist}
+Summary:	A lightweight Qt5 terminal emulator
 License:	GPLv2
 URL:		https://github.com/qterminal/qterminal
 Source0:	https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:	%{name}-qt5.desktop
-Source2:	%{name}_drop-qt5.desktop
 Patch0:     %{name}-fedberry-defaults.patch
-Summary:	Advanced terminal emulator
-Requires:	qterminal-common
+
 BuildRequires:	desktop-file-utils
-BuildRequires:  %{cmake_pkg} >= 2.8
+BuildRequires:  cmake
 BuildRequires:	libqxt-devel
-BuildRequires:	pkgconfig(QtGui)
-# qtermwidget-devel
-BuildRequires:	pkgconfig(qtermwidget4) >= 0.6.0
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  git
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:	pkgconfig(qtermwidget5) >= 0.7.0
+BuildRequires:  pkgconfig(lxqt)
+
+Conflicts:      qterminal-common
+Conflicts:      qterminal-qt5
+Obsoletes:      qterminal-common
+Obsoletes:      qterminal-qt5
 
 %description
-Advanced terminal emulator with many useful bells and whistles.
-
-
-%package	qt5
-Summary:	Advanced terminal emulator (qt5)
-Requires:	qterminal-common
-BuildRequires:	pkgconfig(Qt5Gui)
-BuildRequires:	qt5-qttools-devel
-# qtermwidget-qt5-devel
-BuildRequires:	pkgconfig(qtermwidget5) >= 0.6.0
-
-%description	qt5
-Advanced terminal emulator (qt5 version) with many useful bells and whistles.
-
-
-%package	common
-Summary:	Qterminal common files
-
-%description	common
-Common files for Qterminal as qt4 as qt5 versions.
+QTerminal is a lightweight Qt5 terminal emulator based on QTermWidget.
 
 
 %prep
-%setup -q
-%patch0 -p1 -b .fedberry-defaults
+%autosetup -p1
 
 
 %build
-mkdir build4
-pushd build4
-%cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+%cmake -DUSE_QT5=ON -DUSE_SYSTEM_QXT=OFF
 make %{?_smp_mflags}
-popd
-mkdir build5
-pushd build5
-cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DUSE_QT5=ON -DUSE_SYSTEM_QXT=OFF -DCMAKE_INSTALL_PREFIX=/usr ..
-make %{?_smp_mflags}
-popd
 
 
 %install
-pushd build5
 %make_install
-mv %{buildroot}%{_bindir}/%{name} %{buildroot}%{_bindir}/%{name}-qt5
-install -m644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}-qt5.desktop
-install -m644 %{SOURCE2} %{buildroot}%{_datadir}/applications/%{name}_drop-qt5.desktop
-desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}-qt5.desktop
-desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}_drop-qt5.desktop
-popd
-pushd build4
-%make_install
-popd
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}_drop.desktop
 %find_lang %{name} --with-qt --without-mo
 
 
-%files
+%post
+%desktop_database_post
+
+
+%postun
+%desktop_database_postun
+
+
+%files -f %{name}.lang
+%license LICENSE
+%doc AUTHORS CHANGELOG CONTRIBUTING.md README.md
 %{_bindir}/%{name}
+%{_datadir}/appdata/qterminal.appdata.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/%{name}_drop.desktop
-
-%files	qt5
-%{_bindir}/%{name}-qt5
-%{_datadir}/applications/%{name}-qt5.desktop
-%{_datadir}/applications/%{name}_drop-qt5.desktop
-
-%files	common -f %{name}.lang
-%license COPYING
-%doc AUTHORS CONTRIBUTING.md README
-%{_datadir}/pixmaps/%{name}.png
+%{_datadir}/icons/hicolor/64x64/apps/qterminal.png
 
 
 %changelog
+* Mon Oct 17 2016 Vaughan <devel at agrez.net> - 0.7.0-1
+- New release
+- Depreciate Qt4 build (drop separte qt5 / common rpms)
+- Update BuildRequires/Conflicts/Obsoletes
+- Update Patch0
+- Use %autosetup
+- Update Summary / Description
+- Update %license %doc
+
 * Mon Sep 19 2016 Vaughan <devel at agrez.net> - 0.6.0-6
 - Update qterminal defaults
 
