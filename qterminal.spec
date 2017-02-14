@@ -1,6 +1,6 @@
 Name:		qterminal
-Version:	0.7.0
-Release:	2%{?dist}
+Version:	0.7.1
+Release:	1%{?dist}
 Summary:	A lightweight Qt5 terminal emulator
 License:	GPLv2
 URL:		https://github.com/qterminal/qterminal
@@ -10,6 +10,7 @@ Patch0:     %{name}-fedberry-defaults.patch
 BuildRequires:	desktop-file-utils
 BuildRequires:  cmake
 BuildRequires:	libqxt-devel
+BuildRequires:	lxqt-build-tools
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  git
@@ -66,6 +67,10 @@ fi
 
 
 %changelog
+* Tue Feb 14 2017 Vaughan <devel at agrez.net> - 0.7.1-1
+- New release
+- Add BuildRequires for lxqt-build-tools
+
 * Tue Oct 18 2016 Vaughan <devel at agrez.net> - 0.7.0-2
 - Update fedberry defaults patch
 - Fix %%post scripts
